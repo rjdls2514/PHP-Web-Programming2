@@ -59,12 +59,12 @@
                     for($i=0;$i<10;$i++){
 
                         echo"<tr onclick='location.href = ('board_form.php?num=$row[num]')'>
-                        <td class='column1'>$row[date]</td>
-                        <td class='column2'>$row[order_id]</td>
-                        <td class='column3'>$row[name]</td>
-                        <td class='column4'>$row[price]</td>
-                        <td class='column5'>$row[quantity]</td>
-                        <td class='column6'>$row[price]*$row[quantity]</td>
+                        <td class='column1'>$array[date]</td>
+                        <td class='column2'>$array[order_id]</td>
+                        <td class='column3'>$array[name]</td>
+                        <td class='column4'>$array[price]</td>
+                        <td class='column5'>$array[quantity]</td>
+                        <td class='column6'>$array[price]*$array[quantity]</td>
                         </tr>";
 
                     }
