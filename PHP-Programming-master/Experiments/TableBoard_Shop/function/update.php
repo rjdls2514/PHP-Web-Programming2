@@ -14,7 +14,7 @@ $sql = "update tableboard_shop set Date=$_POST[date], order_id=$_POST[order_id],
 
 $result = mysql_query($sql);
 if(!$result) {
-    echo "<script> alert('update - error message') </script>"
+    echo "<script> alert('update - error message') </script>";
 }
 ?>
 

@@ -21,5 +21,5 @@ if(!$result){
 
 
 <script>
-  //  location.replace('../index.php');
+    location.replace('../index.php');
 </script>

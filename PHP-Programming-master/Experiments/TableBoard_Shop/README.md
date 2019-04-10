@@ -50,33 +50,39 @@ Note:
 - $sql에 tableboard_shop 테이블의 모든 데이터를 불러오는 쿼리를 입력
 - mysql_query로 $sql의 쿼리를 실행하고 그 데이터를 $result에 저장
 
- for($i=0;$i<10;$i++){
+ while($row = mysql_fetch_row($result))
+                         echo " <tr onclick='location.href = 'board_form.php?num=$row[0]''>
+                         <td class='column1'>$row[1]</td>
+                         <td class='column2'>$row[2]</td>
+                         <td class='column3'>$row[3]</td>
+                         <td class='column4'>$row[4]</td>
+                         <td class='column5'>$row[5]</td>
+                         <td class='column6'>$row[4] * $row[5]</td>
+                         </tr> " ;
 
-                        echo"<tr onclick='location.href = ('board_form.php?num=$row[num]')'>
-                        <td class='column1'>$array[date]</td>
-                        <td class='column2'>$array[order_id]</td>
-                        <td class='column3'>$array[name]</td>
-                        <td class='column4'>$array[price]</td>
-                        <td class='column5'>$array[quantity]</td>
-                        <td class='column6'>$array[price]*$array[quantity]</td>
-                        </tr>";
-
-                    }
-
-- 테이블 10개를 for문으로 출력
+- while문으로 모든 테이블을 출력. 단, 조건문을 테이블을 배열로 불러오는 mysql_fetch_row()로 설정
 - 각 요소의 값을 해당 테이블에 있는 필드의 값을 불러와 출력
 
 ## board_form.php 수정
 [여기에 board_form.php 를 어떻게 수정했는지, 설명을 작성하세요.]
 
-<td class="column1"> <input name="date" type="text" value="<? echo "$array[Date]";#TODO: 정보 표시 ?>" /> </td>
-                                <td class="column2"> <input name="order_id" type="number" value="<? echo "$array[order_id]" #TODO: 정보 표시 ?>" /> </td>
-                                <td class="column3"> <input name="name" type="text" value="<? echo "$array[name]" #TODO: 정보 표시 ?>" /> </td>
-                                <td class="column4"> <input name="price" type="number" placeholder="$" style="text-align: right;" value="<? echo "$array[price]" #TODO: 정보 표시 ?>" /> </td>
-                                <td class="column5"> <input name="quantity" type="number" value="<? echo "$array[quantity]" #TODO: 정보 표시 ?>" style="text-align: right;" /> </td>
-                                <td class="column6"> $<span id="total"> <? echo "$array[peice]*echo \"$array[quantity]\"" #TODO: 정보 표시 ?> </span> </td>
+$connect = mysql_connect("localhost", "pcs", "1234");
+    mysql_select_db("pcs_db",$connect);
 
-- num에 해당하는 테이블이 이미 있을 때 num에 해당하는 테이블의 필드 값을 표시
+    $sql = "select * from tableBoard_shop where num=$_POST[num]";
+    $result = mysql_query($sql);
+
+    $row = mysql_fetch_row($result);
+- mysql 에서 num에 해당하는 번호의 테이블을 가져옴(단, 목록 클릭을 통해 해당 num값의 테이블이 있을 경우)
+
+<td class="column1"> <input name="date" type="text" value="<? echo "$row[1]";#TODO: 정보 표시 ?>" /> </td>
+                                <td class="column2"> <input name="order_id" type="number" value="<? echo "$row[2]"; #TODO: 정보 표시 ?>" /> </td>
+                                <td class="column3"> <input name="name" type="text" value="<? echo "$row[3]"; #TODO: 정보 표시 ?>" /> </td>
+                                <td class="column4"> <input name="price" type="number" placeholder="$" style="text-align: right;" value="<? echo "$array[4]"; #TODO: 정보 표시 ?>" /> </td>
+                                <td class="column5"> <input name="quantity" type="number" value="<? echo "$row[5]"; #TODO: 정보 표시 ?>" style="text-align: right;" /> </td>
+                                <td class="column6"> $<span id="total"> <? echo "$row[4]*$row[5]"; #TODO: 정보 표시 ?> </span> </td>
+- num에 해당하는 테이블이 이미 있을 때(update 또는 delete 시)
+  num에 해당하는 테이블의 필드 값을 표시
 
 ## function
 ### insert.php 수정

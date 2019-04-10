@@ -10,7 +10,7 @@
 $connect = mysql_connect("localhost", "pcs", "1234");
 mysql_select_db("pcs_db",$connect);
 
-$sql = "insert into tableboard_shop(Date, order_id, name, price, quantity) values($_POST[date], $_POST[order_id], '$_POST[name]', $_POST[price], $_POST[quantity]";
+$sql = "insert into tableboard_shop(Date, order_id, name, price, quantity) values($_POST[date], $_POST[order_id], '$_POST[name]', $_POST[price], $_POST[quantity])";
 
 $result = mysql_query($sql);
 
@@ -23,5 +23,5 @@ if(!$result){
 
 
 <script>
-  //  location.replace('../index.php');
+    location.replace('../index.php');
 </script>

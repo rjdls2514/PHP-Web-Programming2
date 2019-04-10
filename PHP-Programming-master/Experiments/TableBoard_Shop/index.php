@@ -5,9 +5,6 @@
 
     $sql = "select * from tableBoard_shop";
     $result = mysql_query($sql);
-
-    $array = mysql_fetch_array($result);
-    $row = mysql_fetch_row($result);
 ?>
 
 <!-- 출처 : https://colorlib.com/wp/template/responsive-table-v1/ -->
@@ -56,18 +53,16 @@
                     <?php
                         # TODO : 아래 표시되는 내용을, MySQL 테이블에 있는 레코드로 대체하기!
                         # Note : column6 에 해당하는 Total 은 Price 값과 Quantity 값의 곱으로 표시!
-                    for($i=0;$i<10;$i++){
 
-                        echo"<tr onclick='location.href = ('board_form.php?num=$row[num]')'>
-                        <td class='column1'>$array[date]</td>
-                        <td class='column2'>$array[order_id]</td>
-                        <td class='column3'>$array[name]</td>
-                        <td class='column4'>$array[price]</td>
-                        <td class='column5'>$array[quantity]</td>
-                        <td class='column6'>$array[price]*$array[quantity]</td>
-                        </tr>";
-
-                    }
+                    while($row = mysql_fetch_row($result))
+                        echo " <tr onclick='location.href = 'board_form.php?num=$row[0]''>
+                        <td class='column1'>$row[1]</td>
+                        <td class='column2'>$row[2]</td>
+                        <td class='column3'>$row[3]</td>
+                        <td class='column4'>$row[4]</td>
+                        <td class='column5'>$row[5]</td>
+                        <td class='column6'>$row[4] * $row[5]</td>
+                        </tr> " ;
                     ?>
 
                     </tbody>

@@ -8,7 +8,7 @@ if(isset($_GET[num])) {
     $sql = "select * from tableBoard_shop where num=$_POST[num]";
     $result = mysql_query($sql);
 
-    $array = mysql_fetch_array($result);
+    $row = mysql_fetch_row($result);
 }
 ?>
 
@@ -66,12 +66,12 @@ if(isset($_GET[num])) {
                             <?php
                             if(isset($_GET[num])) { //update 의 경우!
                                 ?>
-                                <td class="column1"> <input name="date" type="text" value="<? echo "$array[Date]";#TODO: 정보 표시 ?>" /> </td>
-                                <td class="column2"> <input name="order_id" type="number" value="<? echo "$array[order_id]" #TODO: 정보 표시 ?>" /> </td>
-                                <td class="column3"> <input name="name" type="text" value="<? echo "$array[name]" #TODO: 정보 표시 ?>" /> </td>
-                                <td class="column4"> <input name="price" type="number" placeholder="$" style="text-align: right;" value="<? echo "$array[price]" #TODO: 정보 표시 ?>" /> </td>
-                                <td class="column5"> <input name="quantity" type="number" value="<? echo "$array[quantity]" #TODO: 정보 표시 ?>" style="text-align: right;" /> </td>
-                                <td class="column6"> $<span id="total"> <? echo "$array[peice]*echo \"$array[quantity]\"" #TODO: 정보 표시 ?> </span> </td>
+                                <td class="column1"> <input name="date" type="text" value="<? echo "$row[1]";#TODO: 정보 표시 ?>" /> </td>
+                                <td class="column2"> <input name="order_id" type="number" value="<? echo "$row[2]"; #TODO: 정보 표시 ?>" /> </td>
+                                <td class="column3"> <input name="name" type="text" value="<? echo "$row[3]"; #TODO: 정보 표시 ?>" /> </td>
+                                <td class="column4"> <input name="price" type="number" placeholder="$" style="text-align: right;" value="<? echo "$array[4]"; #TODO: 정보 표시 ?>" /> </td>
+                                <td class="column5"> <input name="quantity" type="number" value="<? echo "$row[5]"; #TODO: 정보 표시 ?>" style="text-align: right;" /> </td>
+                                <td class="column6"> $<span id="total"> <? echo "$row[4]*$row[5]"; #TODO: 정보 표시 ?> </span> </td>
                                 <?php
                             } else {
                                 ?>
