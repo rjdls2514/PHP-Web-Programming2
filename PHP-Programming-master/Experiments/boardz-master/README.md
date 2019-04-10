@@ -24,7 +24,7 @@
 ```
 
 ## board.php (수정)
-
+```
 <div class="boardz centered-block beautiful">
                             <?php
                             for($i=0;$i<3;$i++) {
@@ -42,5 +42,4 @@
                                 echo "</ul>";
                             }
                             ?>
-
-[내용 추가!!]
+```

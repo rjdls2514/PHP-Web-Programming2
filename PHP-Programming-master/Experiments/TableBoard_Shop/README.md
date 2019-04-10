@@ -23,7 +23,7 @@
 ```
 
 ## MySQL 테이블 생성!
-
+```
 [여기에 테이블 생성 시, 사용한 Query 를 작성하세요.]
 Note: 
 - table 이름은 tableboard_shop 으로 생성
@@ -31,10 +31,10 @@ Note:
 - 각 속성의 type 은 자유롭게 설정 (단, 입력되는 값의 타입과 일치해야 함)
     - ex) price -> int
     - ex) name -> char or varchar
-    
+```
 ## index.php 수정
 [여기에 index.php 를 어떻게 수정했는지, 설명을 작성하세요.]
-
+```
 <?php
     $connect = mysql_connect("localhost", "pcs", "1234");
     mysql_select_db("pcs_db",$connect);
@@ -62,10 +62,10 @@ Note:
 
 - while문으로 모든 테이블을 출력. 단, 조건문을 테이블을 배열로 불러오는 mysql_fetch_row()로 설정
 - 각 요소의 값을 해당 테이블에 있는 필드의 값을 불러와 출력
-
+```
 ## board_form.php 수정
 [여기에 board_form.php 를 어떻게 수정했는지, 설명을 작성하세요.]
-
+```
 $connect = mysql_connect("localhost", "pcs", "1234");
     mysql_select_db("pcs_db",$connect);
 
@@ -83,9 +83,10 @@ $connect = mysql_connect("localhost", "pcs", "1234");
                                 <td class="column6"> $<span id="total"> <? echo "$row[4]*$row[5]"; #TODO: 정보 표시 ?> </span> </td>
 - num에 해당하는 테이블이 이미 있을 때(update 또는 delete 시)
   num에 해당하는 테이블의 필드 값을 표시
-
+```
 ## function
 ### insert.php 수정
+```
 [여기에 insert.php 를 어떻게 수정했는지, 설명을 작성하세요.]
 
 $connect = mysql_connect("localhost", "pcs", "1234");
@@ -97,10 +98,10 @@ $result = mysql_query($sql);
 
 mysql에서 해당 DB를 불러와서 insert를 사용하여 테이블을 추가.
 이떄 각 값들은 board_form.php상에서 입력된 값을 POST형식으로 불러와 저장
-
+```
 ### update.php 수정
 [여기에 update.php 를 어떻게 수정했는지, 설명을 작성하세요.]
-
+```
 $connect = mysql_connect("localhost", "pcs", "1234");
 mysql_select_db("pcs_db",$connect);
 
@@ -112,11 +113,11 @@ mysql에서 해당 DB를 불러와서 update를 사용하여 num에 해당하는
 이떄 각 값들은 board_form.php상에서 입력된 값을 POST형식으로 불러와 저장
 
 
-
+```
 
 ### delete.php 수정
 [여기에 delete.php 를 어떻게 수정했는지, 설명을 작성하세요.]
-
+```
 $connect = mysql_connect("localhost", "pcs", "1234");
 mysql_select_db("pcs_db",$connect);
 
@@ -125,3 +126,4 @@ $sql = "delete from tableboard_shop where num=$_POST[num]";
 $result = mysql_query($sql);
 
 mysql에서 해당 DB를 불러와서 num에 해당하는 번호의 테이블을 delete를 사용하여 제거
+```
