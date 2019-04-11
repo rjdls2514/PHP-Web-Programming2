@@ -6,7 +6,6 @@
  * Time: 오전 9:39
  */
 
-# TODO: MySQL DB에서, POST로 받아온 내용 입력하기!
 $connect = mysql_connect("localhost", "pcs", "1234");
 mysql_select_db("pcs_db",$connect);
 

@@ -51,18 +51,18 @@
                     </thead>
                     <tbody>
                     <?php
-                        # TODO : 아래 표시되는 내용을, MySQL 테이블에 있는 레코드로 대체하기!
-                        # Note : column6 에 해당하는 Total 은 Price 값과 Quantity 값의 곱으로 표시!
+                        while($row = mysql_fetch_row($result)){ ?>
 
-                    while($row = mysql_fetch_row($result)){
-                        echo " <tr onclick='location.href = 'board_form.php?num=$row[0]''>
-                        <td class='column1'>$row[1]</td>
-                        <td class='column2'>$row[2]</td>
-                        <td class='column3'>$row[3]</td>
-                        <td class='column4'>$row[4]</td>
-                        <td class='column5'>$row[5]</td>
-                        <td class='column6'>$row[4] * $row[5]</td>
-                        </tr> " ;
+                        <tr onclick="location.href = ('board_form.php?num=<? echo $row[0]?>')">
+                        <td class='column1'><? echo $row[1];?></td>
+                        <td class='column2'><? echo $row[2];?></td>
+                        <td class='column3'><? echo $row[3];?></td>
+                        <td class='column4'><? echo $row[4];?></td>
+                        <td class='column5'><? echo $row[5];?></td>
+                        <td class='column6'><? echo $row[4]*$row[5];?></td>
+                        </tr>
+
+                    <?php
                     }
                     ?>
 

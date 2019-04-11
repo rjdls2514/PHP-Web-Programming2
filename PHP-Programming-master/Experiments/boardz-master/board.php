@@ -5,10 +5,12 @@
 
 $connect = mysql_connect("localhost", "pcs", "1234");
 mysql_select_db("pcs_db",$connect);
-
-$sql = "select * from boardz";
+if(isset($_GET[num])) {
+    $sql = "select * from boardz where title like '$_GET[num]' ";
+}
+else {$sql = "select * from boardz";}
+echo $sql;
 $result = mysql_query($sql);
-$array = mysql_fetch_array($result);
 
 
 ?>
@@ -41,7 +43,7 @@ $array = mysql_fetch_array($result);
             <div class="text-center">
                 <h2>Beautiful <strong>Boardz</strong></h2>
                 <div style="display: block; width: 50%; margin-right: auto; margin-left: auto; position: relative;">
-                    <form class="example" method="POST" action="action_page.php">
+                    <form class="example" method="POST" action="board.php?num=sumo">
                         <input type="text" placeholder="Search.." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -53,17 +55,25 @@ $array = mysql_fetch_array($result);
                         <!-- Example Boardz element. -->
                         <div class="boardz centered-block beautiful">
                             <?php
-                            for($i=0;$i<3;$i++) {
+                            for($i=0;$i<1000;$i++){
                                 echo "<ul>";
                                 while ($array = mysql_fetch_array($result)) {
-                                    if ($array[num] / 3 == $i) {
-                                        echo "
+                                    echo "
+                                    <li>
                                     <h1>$array[title]</h1>
                                     <br/> $array[contents]
-                                    <li>
                                         <img src=\"$array[image_url]\" alt=\"demo image\"/>
                                     </li>";
-                                    }
+                                    break;
+                                }
+                                while ($array = mysql_fetch_array($result)) {
+                                    echo "
+                                    <li>
+                                    <h1>$array[title]</h1>
+                                    <br/> $array[contents]
+                                        <img src=\"$array[image_url]\" alt=\"demo image\"/>
+                                    </li>";
+                                    break;
                                 }
                                 echo "</ul>";
                             }

@@ -19,12 +19,23 @@
 ├── src
 │   └── boardz.css
 ├── board.php (수정)
-├──action-page.php
 [만약 추가한 파일이 있으면, 내용 추가! 없으면 이 문구 삭제!]
 ```
 
 ## board.php (수정)
 ```
+
+<?php
+
+$connect = mysql_connect("localhost", "pcs", "1234");
+mysql_select_db("pcs_db",$connect);
+
+$sql = "select * from boardz where title like '%$_GET[name]%' ";
+$result = mysql_query($sql);
+
+
+?>
+
 <div class="boardz centered-block beautiful">
                             <?php
                             for($i=0;$i<3;$i++) {
@@ -33,7 +44,7 @@
                                     if ($array[num] / 3 == $i) {
                                         echo "
                                     <h1>$array[title]</h1>
-                                    <br/> $array[contents]
+                      k              <br/> $array[contents]
                                     <li>
                                         <img src=\"$array[image_url]\" alt=\"demo image\"/>
                                     </li>";
